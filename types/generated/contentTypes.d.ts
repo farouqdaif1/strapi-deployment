@@ -822,6 +822,30 @@ export interface ApiHeroHero extends Schema.CollectionType {
   };
 }
 
+export interface ApiMetaMeta extends Schema.CollectionType {
+  collectionName: 'metas';
+  info: {
+    singularName: 'meta';
+    pluralName: 'metas';
+    displayName: 'meta';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    description: Attribute.Text;
+    keywords: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::meta.meta', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::meta.meta', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiProjectProject extends Schema.CollectionType {
   collectionName: 'projects';
   info: {
@@ -965,6 +989,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::company.company': ApiCompanyCompany;
       'api::hero.hero': ApiHeroHero;
+      'api::meta.meta': ApiMetaMeta;
       'api::project.project': ApiProjectProject;
       'api::reel.reel': ApiReelReel;
       'api::review.review': ApiReviewReview;
