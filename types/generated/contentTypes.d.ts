@@ -919,13 +919,14 @@ export interface ApiStoryStory extends Schema.CollectionType {
     singularName: 'story';
     pluralName: 'stories';
     displayName: 'Story';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    year: Attribute.Integer;
     story: Attribute.Text;
+    year: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
